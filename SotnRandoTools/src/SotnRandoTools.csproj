@@ -28,6 +28,9 @@
 		<DefineConstants>$(DefineConstants);WIN</DefineConstants>
 		<DefineConstants>$(DefineConstants);GDI</DefineConstants>
 	</PropertyGroup>
+		<PropertyGroup Condition=" '$(BIZHAWK_HOME)' == '' ">
+		<BIZHAWK_HOME>N:\Archipelago\Bizhawk_2.8.0</BIZHAWK_HOME>
+	</PropertyGroup>
 	<ItemGroup>
 	  <Compile Remove="RandoTracker\TrackerRendererOpenGL.cs" />
 	</ItemGroup>
@@ -53,8 +56,8 @@
 		<EmbeddedResource Include="Resources\BizAlucard.png" />
 	</ItemGroup>
 	<ItemGroup Condition="$(DefineConstants.Contains('GL'))">
-		<Reference Include="BizHawk.Bizware.Graphics" HintPath="$(ProjectDir)../BizHawk/dll/BizHawk.Bizware.Graphics.dll" />
-		<Reference Include="BizHawk.Bizware.Graphics.Controls" HintPath="$(ProjectDir)../BizHawk.Bizware.Graphics.Controls.dll" />
+		<Reference Include="BizHawk.Bizware.Graphics" HintPath="$(BIZHAWK_HOME)/dll/BizHawk.Bizware.Graphics.dll" />
+		<Reference Include="BizHawk.Bizware.Graphics.Controls" HintPath="$(BIZHAWK_HOME).Bizware.Graphics.Controls.dll" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="all" />
@@ -63,17 +66,17 @@
 		<PackageReference Include="System.Drawing.Common" Version="6.0.0" />
 		<PackageReference Include="System.Net.Http" Version="4.3.4" />
 		<PackageReference Include="WatsonWebsocket" Version="2.3.0" />
-		<Reference Include="BizHawk.Common" HintPath="$(ProjectDir)../BizHawk/dll/BizHawk.Common.dll" />
-		<Reference Include="BizHawk.Bizware.BizwareGL" HintPath="$(ProjectDir)../BizHawk/dll/BizHawk.Bizware.BizwareGL.dll" />
+		<Reference Include="BizHawk.Common" HintPath="$(BIZHAWK_HOME)/dll/BizHawk.Common.dll" />
+		<Reference Include="BizHawk.Bizware.BizwareGL" HintPath="$(BIZHAWK_HOME)/dll/BizHawk.Bizware.BizwareGL.dll" />
 		<Reference Include="PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-		<Reference Include="SotnApi" HintPath="$(ProjectDir)../BizHawk/ExternalTools/SotnRandoTools/dll/SotnApi.dll" />
-		<Reference Include="System.Memory" HintPath="$(ProjectDir)../BizHawk/dll/System.Memory.dll" />
+		<Reference Include="SotnApi" HintPath="$(BIZHAWK_HOME)/ExternalTools/SotnRandoTools/dll/SotnApi.dll" />
+		<Reference Include="System.Memory" HintPath="$(BIZHAWK_HOME)/dll/System.Memory.dll" />
 		<Reference Include="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
 		<Reference Include="System.Windows.Forms" />
-		<Reference Include="BizHawk.Client.Common" HintPath="$(ProjectDir)../BizHawk/dll/BizHawk.Client.Common.dll" />
-		<Reference Include="BizHawk.Emulation.Common" HintPath="$(ProjectDir)../BizHawk/dll/BizHawk.Emulation.Common.dll" />
-		<Reference Include="BizHawk.Client.EmuHawk" HintPath="$(ProjectDir)../BizHawk/EmuHawk.exe" />
-		<Reference Include="BizHawk.WinForms.Controls" HintPath="$(ProjectDir)../BizHawk/dll/BizHawk.WinForms.Controls.dll" />
+		<Reference Include="BizHawk.Client.Common" HintPath="$(BIZHAWK_HOME)/dll/BizHawk.Client.Common.dll" />
+		<Reference Include="BizHawk.Emulation.Common" HintPath="$(BIZHAWK_HOME)/dll/BizHawk.Emulation.Common.dll" />
+		<Reference Include="BizHawk.Client.EmuHawk" HintPath="$(BIZHAWK_HOME)/EmuHawk.exe" />
+		<Reference Include="BizHawk.WinForms.Controls" HintPath="$(BIZHAWK_HOME)/dll/BizHawk.WinForms.Controls.dll" />
 		<Reference Include="WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
 	</ItemGroup>
 	<ItemGroup>
@@ -117,6 +120,6 @@
 		</None>
 	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Copy SourceFiles="$(OutputPath)$(MSBuildProjectName).dll" DestinationFolder="$(ProjectDir)../BizHawk/ExternalTools" />
+		<Copy SourceFiles="$(OutputPath)$(MSBuildProjectName).dll" DestinationFolder="$(BIZHAWK_HOME)/ExternalTools" />
 	</Target>
 </Project>

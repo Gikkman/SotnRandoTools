@@ -24,7 +24,7 @@ namespace SotnRandoTools
 			"SotnRandoTools/dll/WatsonWebsocket.dll"
 		})]
 	[ExternalToolEmbeddedIcon("SotnRandoTools.Resources.BizAlucard.png")]
-	[ExternalToolApplicability.SingleRom(CoreSystem.Playstation, "0DDCBC3D")]
+	[ExternalToolApplicability.SingleSystem(CoreSystem.Playstation)]
 	public partial class ToolMainForm : ToolFormBase, IExternalToolForm
 	{
 		[RequiredService]
